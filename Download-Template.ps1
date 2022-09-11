@@ -6,7 +6,7 @@
 # The template used is from the Azure Quick Start templates
 # it creates a Windows image and outputs the finished image to a Managed IMage
 # Set the template file path and the template file name
-$Win10Url = "https://raw.githubusercontent.com/tsrob50/AIB/main/Win10MultiTemplate.json"
+$Win10Url = "https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Win10MultiTemplate.json?token=GHSAT0AAAAAABYT26SXME7735A47EOLQ5E6YY5EFMA"
 $Win10FileName = "Win10MultiTemplate.json"
 #Test to see if the path exists.  Create it if not
 if ((test-path .\Template) -eq $false) {
@@ -26,7 +26,7 @@ else {
 # Setup the variables
 # The first four need to match Enable-identity.ps1 script
 # destination image resource group
-$imageResourceGroup = 'AIBManagedIDRG'
+$imageResourceGroup = 'rg-leoaib-eastus'
 # location (see possible locations in main docs)
 $location = (Get-AzResourceGroup -Name $imageResourceGroup).Location
 # your subscription, this will get your current subscription
@@ -69,7 +69,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 # Create a VM to test 
 $Cred = Get-Credential 
-$ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
+$ArtifactId = (Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred -size Standard_D2_v2
 
 # Remove the template deployment

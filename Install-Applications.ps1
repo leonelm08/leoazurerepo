@@ -21,6 +21,7 @@ function Write-Log {
 #endregion
 
 #region Foxit Reader
+<#
 try {
     Start-Process -filepath msiexec.exe -Wait -ErrorAction Stop -ArgumentList '/i', 'c:\temp\FoxitReader101_enu_Setup.msi', '/quiet', 'ADDLOCAL="FX_PDFVIEWER"'
     if (Test-Path "C:\Program Files (x86)\Foxit Software\Foxit Reader\FoxitReader.exe") {
@@ -35,12 +36,13 @@ catch {
     write-log "Error installing Foxit Reader: $ErrorMessage"
 }
 #endregion
+#>
 
 #region Notepad++
 try {
-    Start-Process -filepath 'c:\temp\npp.7.8.8.Installer.x64.exe' -Wait -ErrorAction Stop -ArgumentList '/S'
-    Copy-Item 'C:\temp\config.model.xml' 'C:\Program Files\Notepad++'
-    Rename-Item 'C:\Program Files\Notepad++\updater' 'C:\Program Files\Notepad++\updaterOld'
+    Start-Process -filepath 'c:\temp\npp.8.4.Installer.x64.exe' -Wait -ErrorAction Stop -ArgumentList '/S'
+#    Copy-Item 'C:\temp\config.model.xml' 'C:\Program Files\Notepad++'
+#    Rename-Item 'C:\Program Files\Notepad++\updater' 'C:\Program Files\Notepad++\updaterOld'
     if (Test-Path "C:\Program Files\Notepad++\notepad++.exe") {
         Write-Log "Notepad++ has been installed"
     }
@@ -53,6 +55,9 @@ catch {
     write-log "Error installing Notepad++: $ErrorMessage"
 }
 #endregion
+
+
+
 
 #region Sysprep Fix
 # Fix for first login delays due to Windows Module Installer

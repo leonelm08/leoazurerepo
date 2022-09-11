@@ -1,9 +1,9 @@
 # Set Variables for the commands
 # Destination image resource group name
-$imageResourceGroup = '<Image Resource Group>'
+$imageResourceGroup = 'rg-leoaib-eastus'
 # Azure region
 # Supported Regions East US, East US 2, West Central US, West US, West US 2, North Europe, West Europe
-$location = '<Location>'
+$location = 'eastus'
 # Get the subscription ID
 $subscriptionID = (Get-AzContext).Subscription.Id
 
