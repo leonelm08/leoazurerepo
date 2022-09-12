@@ -6,7 +6,7 @@
 # The template used is from the Azure Quick Start templates
 # it creates a Windows image and outputs the finished image to a Managed IMage
 # Set the template file path and the template file name
-$Win10Url = "https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Win10MultiTemplate.json?token=GHSAT0AAAAAABYT26SXME7735A47EOLQ5E6YY5EFMA"
+$Win10Url = "https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Win10MultiAppsTemplate.json?token=GHSAT0AAAAAABYT26SXPU3QYRY4ZYD2T2F2YY577ZQ"
 $Win10FileName = "Win10MultiTemplate.json"
 #Test to see if the path exists.  Create it if not
 if ((test-path .\Template) -eq $false) {
