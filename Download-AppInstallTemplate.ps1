@@ -30,7 +30,7 @@ $imageResourceGroup = 'rg-leoaib-eastus'
 # Add the file archive Shared Access Signature
 $archiveSas = "https://leoaibsoftware.blob.core.windows.net/leosoftwarestore/SoftwareFile.zip?sp=r&st=2022-09-11T15:19:08Z&se=2022-09-30T23:19:08Z&spr=https&sv=2021-06-08&sr=b&sig=P5WTvZX6mNb8wdTSaSAkVJC8AlUCLOai6E0T0HTiIEw%3D"
 # Add the path to the PowerShell Install Script
-$installScript = 'https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Install-Applications.ps1?token=GHSAT0AAAAAABYT26SXQQM2QRYOA7NRCYNKYY573MA'
+$installScript = 'https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Install-Applications.ps1'
 # location (see possible locations in main docs)
 $location = (Get-AzResourceGroup -Name $imageResourceGroup).Location
 # your subscription, this will get your current subscription
@@ -75,7 +75,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 
 # Create a VM to test 
 $Cred = Get-Credential 
-$ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
+$ArtifactId = (Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $imageTemplateName -ResourceGroupName $imageResourceGroup).ArtifactId
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred -size Standard_D2_v2
 
 # Remove the template deployment
