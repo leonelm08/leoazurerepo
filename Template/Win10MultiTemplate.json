@@ -66,7 +66,7 @@
             "type": "PowerShell",
             "runElevated": true,
             "name": "RunPoShInstall",
-            "scriptUri": "https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Install-Applications.ps1?token=GHSAT0AAAAAABYT26SXQQM2QRYOA7NRCYNKYY573MA"
+            "scriptUri": "https://raw.githubusercontent.com/leonelm08/leoazurerepo/main/Install-Applications.ps1"
           }
         ],
         "distribute": [
@@ -85,6 +85,14 @@
     }
   ]
 }
+
+
+
+
+
+
+
+
 
 
 
